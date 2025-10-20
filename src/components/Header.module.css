@@ -1,0 +1,39 @@
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 5%;
+    background-color: rgba(0, 0, 0, 0.432);
+    backdrop-filter: blur(5px);
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+}
+
+.logo img{
+    height: 40px;   
+}
+
+.navigation ul {
+    list-style-type: none;
+    display: flex;
+    gap: 30px;
+    margin: 0;
+    padding: 0;
+}
+
+.navigation a {
+  color: var(--color-text-light);
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 14px;
+  padding-bottom: 5px;
+  border-bottom: 2px solid transparent;
+  transition: border-color 0.3s ease;
+}
+
+.navigation a:hover {
+  border-bottom-color: var(--color-primary); /* Usando a variável de cor primária */
+}
