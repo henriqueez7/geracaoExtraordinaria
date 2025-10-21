@@ -10,7 +10,7 @@ export default function Hero() {
     <section id="home" className={styles.heroSection} style={heroStyle}>
       <div className={styles.heroContent}>
         <h1>NÃO FIQUE DE FORA DESSA</h1>
-        <button className={styles.ctaButton}>FAÇA PARTE DESSA FAMILIA</button>
+        <button className={styles.ctaButton} ><a href="#contato">FAÇA PARTE DESSA FAMILIA</a></button>
       </div>
     </section>
   );

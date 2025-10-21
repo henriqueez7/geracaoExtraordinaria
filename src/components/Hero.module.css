@@ -48,6 +48,11 @@
   transition: transform 0.3s ease, background-color 0.3s ease;
 }
 
+.ctaButton a{
+  text-decoration: none;
+  color: var(--color-text-light);
+}
+
 .ctaButton:hover {
   background-color: var(--color-primary-light);
   transform: scale(1.05);
