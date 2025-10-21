@@ -1,27 +1,27 @@
 .header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 15px 5%;
-    background-color: rgba(0, 0, 0, 0.432);
-    backdrop-filter: blur(5px);
-    width: 100%;
-    position: absolute;
-    top: 0;
-    left: 0;
-    z-index: 1000;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 5%;
+  background-color: rgba(0, 0, 0, 0.432);
+  backdrop-filter: blur(5px);
+  width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1000;
 }
 
-.logo img{
-    height: 40px;   
+.logo img {
+  height: 40px;
 }
 
 .navigation ul {
-    list-style-type: none;
-    display: flex;
-    gap: 30px;
-    margin: 0;
-    padding: 0;
+  list-style-type: none;
+  display: flex;
+  gap: 30px;
+  margin: 0;
+  padding: 0;
 }
 
 .navigation a {
@@ -35,5 +35,80 @@
 }
 
 .navigation a:hover {
-  border-bottom-color: var(--color-primary); /* Usando a variável de cor primária */
+  border-bottom-color: var(--color-primary);
+}
+
+.hamburger {
+  display: none;
+  cursor: pointer;
+  z-index: 20;
+  position: relative;
+}
+
+.bar {
+  display: block;
+  width: 25px;
+  height: 3px;
+  margin: 5px auto;
+  transition: all 0.3s ease-in-out;
+  background-color: var(--color-text-light);
+}
+
+@media only screen and (max-width: 768px) {
+  .navigation ul {
+    display: none;
+  }
+
+  .hamburger {
+    display: block;
+  }
+
+  /* --- 👇 CORREÇÃO APLICADA AQUI 👇 --- */
+  
+  /* 1. Estilos da TELA CHEIA agora estão no container <nav> */
+  .navigation.active {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: var(--color-background);
+    z-index: 10;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  /* 2. A regra para o <ul> agora é muito mais simples */
+  .navigation.active ul {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+  }
+
+  /* O resto do código continua igual, pois já estava correto */
+  .navigation.active li {
+    padding: 20px 0;
+  }
+
+  .navigation.active a {
+    font-size: 1.5rem;
+  }
+
+  .navigation.active + .hamburger {
+    position: fixed;
+    top: 28px;
+    right: 5%;
+  }
+
+  .navigation.active + .hamburger .bar:nth-child(2) {
+    opacity: 0;
+  }
+  .navigation.active + .hamburger .bar:nth-child(1) {
+    transform: translateY(8px) rotate(45deg);
+  }
+  .navigation.active + .hamburger .bar:nth-child(3) {
+    transform: translateY(-8px) rotate(-45deg);
+  }
 }

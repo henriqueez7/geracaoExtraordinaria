@@ -1,0 +1,56 @@
+.footer {
+  padding: 20px 5%;
+  background-color: var(--color-surface);
+  border-top: 1px solid #333;
+}
+
+.footerContainer {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.socialLink svg {
+  color: var(--color-text-secondary);
+  transition: color 0.3s ease;
+}
+
+.socialLink:hover svg {
+  color: var(--color-primary);
+}
+
+.backToTopBtn {
+  background-color: transparent;
+  border: none;
+}
+
+.backToTopBtn {
+  background-color: transparent;
+  border: none;
+  color: var(--color-text-secondary);
+  font-size: 2.5rem;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.4s ease, transform 0.4s ease, color 0.3s ease;
+  pointer-events: none;
+}
+
+.backToTopBtn.visible {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+
+.backToTopBtn:hover {
+  color: var(--color-primary-light);
+  transform: scale(1.1);
+}
