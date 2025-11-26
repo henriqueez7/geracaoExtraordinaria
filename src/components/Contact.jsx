@@ -2,15 +2,49 @@ import React, { useState } from "react";
 import styles from "./Contact.module.css";
 
 export default function Contact() {
-  const [nome, SetNome] = useState("");
-  const [email, SetEmail] = useState("");
-  const [telefoone, setTelefone] = useState("");
+  const [nome, setNome] = useState("");
+  const [email, setEmail] = useState("");
+  const [telefone, setTelefone] = useState("");
+  const [enviando, setEnviando] = useState(false);
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
-    const formData = { nome, email, telefoone };
-    console.log("Dados do formulario:", formData);
-    alert("Obrigado pelo contato!! (olhar o console) ");
+    setEnviando(true);
+
+    const formData = { nome, email, telefone };
+
+    try {
+      const response = await fetch('http://localhost:8080/api/enviar', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(formData)
+      });
+
+      if (response.ok) {
+        const numeroLider = '5561992137065'; 
+        
+        const mensagemZap = `Olá! Me chamo ${nome}. Enviei meus dados pelo site e quero participar da célula!`;
+        const linkWhatsApp = `https://wa.me/${numeroLider}?text=${encodeURIComponent(mensagemZap)}`;
+
+        window.open(linkWhatsApp, '_blank');
+
+        setNome("");
+        setEmail("");
+        setTelefone("");
+        
+        alert("Sucesso! Verifique seu e-mail e fale conosco no WhatsApp.");
+      } else {
+        alert("Ops! Houve um erro ao enviar o e-mail. Tente novamente.");
+      }
+
+    } catch (erro) {
+      console.error(erro);
+      alert("Erro de conexão com o servidor.");
+    } finally {
+      setEnviando(false);
+    }
   };
 
   return (
@@ -28,7 +62,8 @@ export default function Contact() {
             placeholder="Digite seu nome"
             className={styles.input}
             value={nome}
-            onChange={(e) => SetNome(e.target.value)}
+            onChange={(e) => setNome(e.target.value)}
+            required
           />
 
           <input
@@ -44,12 +79,12 @@ export default function Contact() {
             type="tel"
             placeholder="Digite seu telefone"
             className={styles.input}
-            value={telefoone}
+            value={telefone}
             onChange={(e) => setTelefone(e.target.value)}
             required
           />
-          <button type="submit" className={styles.button}>
-            ENVIAR MENSAGEM
+          <button type="submit" className={styles.button} disabled={enviando}>
+            {enviando ? "ENVIANDO..." : "ENVIAR MENSAGEM"}
           </button>
         </form>
       </div>
