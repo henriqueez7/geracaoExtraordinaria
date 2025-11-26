@@ -28,15 +28,16 @@ export default function Contact() {
         const mensagemZap = `Olá! Me chamo ${nome}. Enviei meus dados pelo site e quero participar da célula!`;
         const linkWhatsApp = `https://wa.me/${numeroLider}?text=${encodeURIComponent(mensagemZap)}`;
 
-        window.open(linkWhatsApp, '_blank');
+        alert("Sucesso! Vamos te redirecionar para o WhatsApp agora.");
+
+        window.location.href = linkWhatsApp;
 
         setNome("");
         setEmail("");
         setTelefone("");
         
-        alert("Sucesso! Verifique seu e-mail e fale conosco no WhatsApp.");
       } else {
-        alert("Ops! Houve um erro ao enviar o e-mail. Tente novamente.");
+        alert("Ops! Houve um erro ao enviar o e-mail.");
       }
 
     } catch (erro) {
