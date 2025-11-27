@@ -14,19 +14,24 @@ export default function Contact() {
     const formData = { nome, email, telefone };
 
     try {
-      const response = await fetch('http://localhost:8080/api/enviar', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(formData)
-      });
+      const response = await fetch(
+        "https://api-celula.onrender.com/api/enviar",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(formData),
+        }
+      );
 
       if (response.ok) {
-        const numeroLider = '5561992137065'; 
-        
+        const numeroLider = "5561992137065";
+
         const mensagemZap = `Olá! Me chamo ${nome}. Enviei meus dados pelo site e quero participar da célula!`;
-        const linkWhatsApp = `https://wa.me/${numeroLider}?text=${encodeURIComponent(mensagemZap)}`;
+        const linkWhatsApp = `https://wa.me/${numeroLider}?text=${encodeURIComponent(
+          mensagemZap
+        )}`;
 
         alert("Sucesso! Vamos te redirecionar para o WhatsApp agora.");
 
@@ -35,11 +40,9 @@ export default function Contact() {
         setNome("");
         setEmail("");
         setTelefone("");
-        
       } else {
         alert("Ops! Houve um erro ao enviar o e-mail.");
       }
-
     } catch (erro) {
       console.error(erro);
       alert("Erro de conexão com o servidor.");
