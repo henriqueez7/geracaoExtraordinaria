@@ -14,16 +14,13 @@ export default function Contact() {
     const formData = { nome, email, telefone };
 
     try {
-      const response = await fetch(
-        "https://api-celula.onrender.com/api/enviar",
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify(formData),
-        }
-      );
+      const response = await fetch("backend-celula-production.up.railway.app", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+      });
 
       if (response.ok) {
         const numeroLider = "5561992137065";
