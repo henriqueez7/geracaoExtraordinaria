@@ -25,7 +25,7 @@ export default function Footer() {
     <footer className={styles.footer}>
       <div className={styles.footerContainer}>
         <a
-          href="https://www.instagram.com/seu_usuario_aqui"
+          href="https://www.instagram.com/extraordinariageracao?igsh=MTc2emk2YnFzaG54dg=="
           target="_blank"
           rel="noopener noreferrer"
           className={styles.socialLink}
