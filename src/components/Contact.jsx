@@ -27,8 +27,7 @@ export default function Contact() {
 
         const mensagemZap = `Olá! Me chamo ${nome}. Enviei meus dados pelo site e quero participar da célula!`;
         const linkWhatsApp = `https://wa.me/${numeroLider}?text=${encodeURIComponent(
-          mensagemZap,
-          target="_blank"
+          mensagemZap
         )}`;
 
         alert("Sucesso! Vamos te redirecionar para o WhatsApp agora.");
