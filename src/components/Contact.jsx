@@ -14,7 +14,7 @@ export default function Contact() {
     const formData = { nome, email, telefone };
 
     try {
-      const response = await fetch("backend-celula-production.up.railway.app", {
+      const response = await fetch('https://backend-celula-production.up.railway.app/api/enviar', {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
